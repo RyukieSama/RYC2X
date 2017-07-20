@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "HelloWorldLayer.hpp"
 
 USING_NS_CC;
 
@@ -26,13 +27,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("helloworld", Rect(0, 0, 960, 640));
+        glview = GLViewImpl::createWithRect("helloworld", Rect(0, 0, visibleSize.width, visibleSize.height));
         
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
+    director->getOpenGLView()->setDesignResolutionSize(visibleSize.width, visibleSize.height, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -43,8 +45,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
-
+//    auto scene = HelloWorld::createScene();
+    auto scene = Scene::create();
+    HelloWorldLayer * layer = HelloWorldLayer::create();
+    scene->addChild(layer);
+    
     // run
     director->runWithScene(scene);
 
