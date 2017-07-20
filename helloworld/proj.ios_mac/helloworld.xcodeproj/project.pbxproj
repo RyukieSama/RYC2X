@@ -16,6 +16,10 @@
 		46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		4A429F0E1F20B2B9008667F4 /* HelloWorldLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A429F0C1F20B2B9008667F4 /* HelloWorldLayer.cpp */; };
+		4ABE195A1F20FD8400970428 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE19581F20FD8400970428 /* SceneManager.cpp */; };
+		4ABE195D1F20FF9200970428 /* LoadLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE195B1F20FF9200970428 /* LoadLayer.cpp */; };
+		4ABE19601F20FFA000970428 /* OpenLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE195E1F20FFA000970428 /* OpenLayer.cpp */; };
+		4ABE19631F20FFA900970428 /* ClockLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4ABE19611F20FFA900970428 /* ClockLayer.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -78,6 +82,14 @@
 		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		4A429F0C1F20B2B9008667F4 /* HelloWorldLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldLayer.cpp; sourceTree = "<group>"; };
 		4A429F0D1F20B2B9008667F4 /* HelloWorldLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HelloWorldLayer.hpp; sourceTree = "<group>"; };
+		4ABE19581F20FD8400970428 /* SceneManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
+		4ABE19591F20FD8400970428 /* SceneManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SceneManager.hpp; sourceTree = "<group>"; };
+		4ABE195B1F20FF9200970428 /* LoadLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadLayer.cpp; sourceTree = "<group>"; };
+		4ABE195C1F20FF9200970428 /* LoadLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoadLayer.hpp; sourceTree = "<group>"; };
+		4ABE195E1F20FFA000970428 /* OpenLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenLayer.cpp; sourceTree = "<group>"; };
+		4ABE195F1F20FFA000970428 /* OpenLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpenLayer.hpp; sourceTree = "<group>"; };
+		4ABE19611F20FFA900970428 /* ClockLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClockLayer.cpp; sourceTree = "<group>"; };
+		4ABE19621F20FFA900970428 /* ClockLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ClockLayer.hpp; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -252,6 +264,14 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				4A429F0C1F20B2B9008667F4 /* HelloWorldLayer.cpp */,
 				4A429F0D1F20B2B9008667F4 /* HelloWorldLayer.hpp */,
+				4ABE19581F20FD8400970428 /* SceneManager.cpp */,
+				4ABE19591F20FD8400970428 /* SceneManager.hpp */,
+				4ABE195B1F20FF9200970428 /* LoadLayer.cpp */,
+				4ABE195C1F20FF9200970428 /* LoadLayer.hpp */,
+				4ABE195E1F20FFA000970428 /* OpenLayer.cpp */,
+				4ABE195F1F20FFA000970428 /* OpenLayer.hpp */,
+				4ABE19611F20FFA900970428 /* ClockLayer.cpp */,
+				4ABE19621F20FFA900970428 /* ClockLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -433,9 +453,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABE195A1F20FD8400970428 /* SceneManager.cpp in Sources */,
+				4ABE19601F20FFA000970428 /* OpenLayer.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				4ABE195D1F20FF9200970428 /* LoadLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				4ABE19631F20FFA900970428 /* ClockLayer.cpp in Sources */,
 				4A429F0E1F20B2B9008667F4 /* HelloWorldLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

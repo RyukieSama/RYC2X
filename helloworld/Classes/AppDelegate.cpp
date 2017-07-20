@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "HelloWorldLayer.hpp"
+#include "SceneManager.hpp"
 
 USING_NS_CC;
 
@@ -45,14 +46,24 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
+    
+    //DEMO:1   初始的HelloWorld
 //    auto scene = HelloWorld::createScene();
+    
+    //DEMO2:   自己的HelloWorld
     auto scene = Scene::create();
     HelloWorldLayer * layer = HelloWorldLayer::create();
     scene->addChild(layer);
     
+    //DEMO3: 时钟
+    SceneManager *manager = new SceneManager();
+    manager->createLoadScene();
+    
+    
     // run
-    director->runWithScene(scene);
-
+//    director->runWithScene(scene);
+    director->runWithScene(manager->loadScene);
+    
     return true;
 }
 
