@@ -18,6 +18,7 @@ class LoadLayer : public Layer {
 public:
     CREATE_FUNC(LoadLayer);
     virtual bool init();
+    void onScheduleOnce(float dt);
     
 public:
     SceneManager * tsm;

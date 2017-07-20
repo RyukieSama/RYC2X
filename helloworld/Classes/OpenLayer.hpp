@@ -18,6 +18,7 @@ class OpenLayer : public Layer {
 public:
     CREATE_FUNC(OpenLayer);
     virtual bool init();
+    void onMenuClock(Ref * pSender);
 public:
     SceneManager * tsm;
 };
