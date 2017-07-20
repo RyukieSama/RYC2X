@@ -19,6 +19,7 @@ public:
 //    CREATE_FUNC(HelloWorldLayer);
     static HelloWorldLayer * create();//声明
     virtual bool init();
+    void menuCloseCallBack(Ref * pSender);
     
 };
 
