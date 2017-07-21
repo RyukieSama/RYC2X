@@ -65,13 +65,30 @@ bool ClockLayer::init(){
     _minute->setRotation(mRotation);
     _hour->setRotation(hRotation);
     
+    schedule(CC_SCHEDULE_SELECTOR(ClockLayer::timeUpdate), 1.0);
+    
     return true;
 }
 
 void ClockLayer::menuCallBack(cocos2d::Ref *pSender) {
-    
+    tsm->gotoOpenScene();
 }
 
 void ClockLayer::timeUpdate(float dt) {
     
+    _second->setRotation( _second->getRotation() + 6 );
+    if (_second->getRotation() == 360) {
+        _minute->setRotation( _minute->getRotation() +6 );
+        _second->setRotation(0);
+        
+        if ((int)_minute->getRotation()%72==0) {
+            _hour->setRotation(_hour->getRotation() + 6);
+            if (_minute->getRotation() == 360) {
+                _minute->setRotation(0);
+            }
+        }
+        
+        
+        
+    }
 }
