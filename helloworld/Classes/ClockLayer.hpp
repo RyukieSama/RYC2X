@@ -18,9 +18,19 @@ class ClockLayer : public Layer {
 public:
     CREATE_FUNC(ClockLayer);
     virtual bool init();
+    void menuCallBack(Ref * pSender);
+    void timeUpdate(float dt);
     
 public:
     SceneManager * tsm;
+    
+    
+    Sprite * _hour;
+    Sprite * _minute;
+    Sprite * _second;
+    Sprite * _background;
+    
+    
 };
 
 #endif /* ClockLayer_hpp */

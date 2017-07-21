@@ -8,6 +8,10 @@
 #include "OpenLayer.hpp"
 
 bool OpenLayer::init(){
+    if (!Layer::init()) {
+        return false;
+    }
+    
     Size winSize = Director::getInstance()->getWinSize();
     
     Label *label = Label::createWithSystemFont("Clock", "", 48);

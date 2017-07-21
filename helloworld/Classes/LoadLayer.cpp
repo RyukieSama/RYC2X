@@ -8,6 +8,10 @@
 #include "LoadLayer.hpp"
 
 bool LoadLayer::init(){
+    if (!Layer::init()) {
+        return false;
+    }
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     
     Label *label = Label::create();
