@@ -42,6 +42,29 @@ bool ClockLayer::init(){
     _hour->setAnchorPoint(Vec2(0.5, 0));
     this->addChild(_hour);
     
+    //获取当前系统时间
+    struct timeval nowTimeval;
+    gettimeofday(&nowTimeval, NULL);
+    struct tm *tm;
+    time_t time_sec;
+    time_sec = nowTimeval.tv_sec;
+    tm = localtime(&time_sec);
+    
+    CCLOG("H: %d, M: %d, S:%d",tm->tm_hour,tm->tm_min,tm->tm_hour);
+    
+    mRotation = tm->tm_min * 6;
+    sRotation = tm->tm_sec * 6;
+    
+    if (tm->tm_hour > 12) {
+        hRotation = (tm->tm_hour - 12) * 5 * 6 + (mRotation/72) * 6;
+    } else {
+        hRotation = (tm->tm_hour) * 5 * 6 + (mRotation/72) * 6;
+    }
+    
+    _second->setRotation(sRotation);
+    _minute->setRotation(mRotation);
+    _hour->setRotation(hRotation);
+    
     return true;
 }
 

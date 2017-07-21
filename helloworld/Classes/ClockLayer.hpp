@@ -30,6 +30,9 @@ public:
     Sprite * _second;
     Sprite * _background;
     
+    int hRotation = 0;
+    int mRotation = 0;
+    int sRotation = 0;
     
 };
 
