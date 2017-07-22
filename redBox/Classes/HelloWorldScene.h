@@ -3,11 +3,17 @@
 
 #include "cocos2d.h"
 
+USING_NS_CC;
+
 class HelloWorld : public cocos2d::Scene
 {
 public:
     static cocos2d::Scene* createScene();
-
+    
+    //
+    HelloWorld();
+    ~HelloWorld();
+    
     virtual bool init();
     
     // a selector callback
@@ -15,6 +21,13 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    
+public:
+    void setBackground(const char * filename);
+    
+private:
+    Sprite * backImage;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
