@@ -21,10 +21,12 @@ void HelloWorld::setBackground(const char *filename) {
 
 HelloWorld::HelloWorld() {
     backImage = 0;
+    state = 0;
 }
 
 HelloWorld::~HelloWorld() {
-    
+    backImage = 0;
+    state = 0;
 }
 
 // on "init" you need to initialize your instance
@@ -40,6 +42,36 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    //事件分发器
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);//吞噬???
+    listener->onTouchBegan = [=](Touch * touch,Event *event) {
+        if (state == 0) {//
+            Vec2 touchPoint = touch->getLocation();
+            Size s = redNode->getContentSize();
+            Rect rec = Rect(redNode->getPosition().x,redNode->getPosition().y,s.width,s.height);
+            if (rec.containsPoint(touchPoint)) {
+                state = 1;
+//                unscheduleUpdate();
+                unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::update));
+                
+                redNode->setPosition(Vec2(320, 480));
+                redNode->playAnimation();
+                return true;
+                
+            }
+        } else {
+            state = 0;
+            redNode->setDefaultState();
+//            scheduleUpdate();
+            schedule(CC_SCHEDULE_SELECTOR(HelloWorld::update), 2);
+        }
+        
+        
+        return false;
+    };
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
     setBackground("res/BackGround.jpg");
     
@@ -124,7 +156,7 @@ void HelloWorld::update(float dt) {
 
 void HelloWorld::redNodeClick(cocos2d::Ref *pSender) {
 //    scheduleUpdate();
-    schedule(CC_SCHEDULE_SELECTOR(HelloWorld::update), 0.5);
+    schedule(CC_SCHEDULE_SELECTOR(HelloWorld::update), 2);
     static_cast<Node *>(pSender)->setVisible(false);
 }
 

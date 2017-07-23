@@ -34,6 +34,7 @@ public:
 private:
     Sprite * backImage;
     RedNode * redNode;
+    int state;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

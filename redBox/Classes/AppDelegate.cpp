@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     
     //在加载页面加载动画资源
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/red.plist");
     
     
     // create a scene. it's an autorelease object
