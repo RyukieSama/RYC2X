@@ -43,6 +43,14 @@ bool HelloWorld::init()
     
     setBackground("res/BackGround.jpg");
     
+    auto item = MenuItemFont::create("抢", CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    item->setFontSizeObj(120);
+    item->setColor(Color3B::RED);
+    
+    auto menuQ = Menu::create(item,NULL);
+//    menuQ->setPosition(Vec2::ZERO);
+    menuQ->setPosition(visibleSize/2);
+    this->addChild(menuQ);
     
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
