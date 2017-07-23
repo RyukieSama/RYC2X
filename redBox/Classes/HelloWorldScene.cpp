@@ -43,7 +43,7 @@ bool HelloWorld::init()
     
     setBackground("res/BackGround.jpg");
     
-    auto item = MenuItemFont::create("抢", CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    auto item = MenuItemFont::create("抢", CC_CALLBACK_1(HelloWorld::redNodeClick, this));
     item->setFontSizeObj(120);
     item->setColor(Color3B::RED);
     
@@ -96,14 +96,37 @@ bool HelloWorld::init()
 //
     
     
+    redNode = RedNode::create();
+    redNode->loadAnimation();
+    redNode->setVisible(false);
+    this->addChild(redNode);
     
-    
-    
-    
+//    scheduleUpdate();
     
     return true;
 }
 
+
+void HelloWorld::update(float dt) {
+    static float time = 0;
+    if (time > 1.0f) {
+        time = 0;
+    } else {
+        time += dt;
+    }
+    
+    //红包随机位置
+    float pos_x = std::rand()%640;
+    float pos_y = std::rand()%960;
+    redNode->setVisible(true);
+    redNode->setPosition(pos_x,pos_y);
+}
+
+void HelloWorld::redNodeClick(cocos2d::Ref *pSender) {
+//    scheduleUpdate();
+    schedule(CC_SCHEDULE_SELECTOR(HelloWorld::update), 0.5);
+    static_cast<Node *>(pSender)->setVisible(false);
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
