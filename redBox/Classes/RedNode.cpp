@@ -7,13 +7,15 @@
 
 #include "RedNode.hpp"
 
+std::vector<std::string> contextRed = {"百万大奖", "五毛", "再来一次"};
+
 bool RedNode::init() {
     if (!Node::init()) {
         return false;
     }
     
     backImage = Sprite::create("res/default.png");
-    backImage->setAnchorPoint(Point::ZERO);
+    backImage->setAnchorPoint(Point::ZERO);//方便触摸点的坐标计算
     this->addChild(backImage);
     
     //设置红包contentSize和精灵一样大
@@ -43,12 +45,14 @@ void RedNode::loadAnimation() {
     int index = 1;
     
     SpriteFrame * frame = NULL;
+    
+    //容器  是COCOCS封装的
     Vector<SpriteFrame *> frameArray;
     
     do {
         frame = spriteFrameCache->getSpriteFrameByName(__String::createWithFormat("%d.png",index)->getCString());
         if (frame == 0) {
-            break
+            break;
         } else {
             frameArray.pushBack(frame);
             index++;
@@ -68,17 +72,50 @@ void RedNode::loadAnimation() {
 }
 
 void RedNode::playAnimation() {
+    if (backImage == 0 || animate == 0) {
+        return;
+    }
+    
+    backImage->setAnchorPoint(Vec2(0.5, 0.5));//恢复锚点位置  为了动画
+    
+    CallFunc * callFunc = CallFunc::create(CC_CALLBACK_0(RedNode::aniCallBack, this));
+    Sequence * seq = Sequence::create(animate, callFunc, NULL);
+    backImage->runAction(seq);
     
 }
 
 void RedNode::aniCallBack() {
-    
+    //从容器中随机获取字符创
+    std::string str = contextRed[std::rand()%contextRed.size()];//设置随机范围
+    printf("%s",str.c_str());
+    addTitle(str.c_str());
 }
 
 void RedNode::setDefaultState() {
-    
+    if (backImage != 0) {
+        backImage->removeFromParent();
+        backImage = Sprite::create("res/default.png");
+        backImage->setPosition(Point::ZERO);
+        this->addChild(backImage); //或者直接更换纹理
+        
+        if (title != 0) {
+            title->setVisible(false);
+        }
+        
+    }
 }
 
-void RedNode::addTitle(const char *title) {
+void RedNode::addTitle(const char * text) {
+    if (title != 0) {//非第一次点红包
+        title->setString(text);
+        title->setVisible(true);
+        return;
+    }
+    
+    title = Label::createWithSystemFont(text, "", 40);
+    title->setPosition(Point::ZERO);
+    title->setColor(Color3B::RED);
+    this->addChild(title,1);
+    return;
     
 }

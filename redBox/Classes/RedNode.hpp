@@ -25,7 +25,7 @@ public:
     void playAnimation();
     void aniCallBack();
     void setDefaultState();
-    void addTitle(const char * title);
+    void addTitle(const char * text);
     
 private:
     Animate * animate;
