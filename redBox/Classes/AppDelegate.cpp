@@ -97,6 +97,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //
 //    register_all_packages();
     
+    
+    //在加载页面加载动画资源
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/plist");
+    
+    
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

@@ -28,7 +28,7 @@ public:
     void addTitle(const char * title);
     
 private:
-    Animate * animation;
+    Animate * animate;
     Sprite * backImage;
     Label * title;
 };
